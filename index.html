@@ -1,0 +1,23 @@
+<html >
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="angular.min.js"></script>
+        <script src ="app.js"></script>
+    </head>
+    <body ng-app="myApp">
+	    <form ng-controller="GreetingController">
+	    		<div class="form-group" ng-repeat="question in questions">
+    				<label>{{question.question}}</label>
+					<div ng-if="question.variants" ng-repeat="variant in question.variants" class="{{question.type}}">
+						<label>
+							<input name="{{qustion.name}}" type="{{question.type}}" value="{{variant}}">
+							{{variant}}
+						</label>
+					</div>
+					<input ng-if="!question.variants" class="form-control" name="{{qustion.name}}" type="{{question.type}}">
+  				</div>
+  			<button type="submit" class="btn btn-success">Отправить</button>
+		</form>
+    </body>
+</html>
