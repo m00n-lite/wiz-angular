@@ -7,17 +7,18 @@
     </head>
     <body ng-app="myApp">
 	    <form ng-controller="GreetingController">
-	    		<div class="form-group" ng-repeat="question in questions">
+	    		<div class="form-group" ng-repeat="question in questions" ng:show="currentState == $index">
     				<label>{{question.question}}</label>
 					<div ng-if="question.variants" ng-repeat="variant in question.variants" class="{{question.type}}">
 						<label>
-							<input name="{{qustion.name}}" type="{{question.type}}" value="{{variant}}">
+							<input  name="{{question.name}}" type="{{question.type}}" value="{{variant}}">
 							{{variant}}
 						</label>
 					</div>
-					<input ng-if="!question.variants" class="form-control" name="{{qustion.name}}" type="{{question.type}}">
+					<input ng-if="!question.variants" class="form-control" name="{{question.name}}" type="{{question.type}}">
   				</div>
-  			<button type="submit" class="btn btn-success">Отправить</button>
+  			<button type="submit" class="btn btn-success" ng-click="Next()">Далее</button>
+
 		</form>
     </body>
 </html>
